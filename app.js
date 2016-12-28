@@ -5,11 +5,18 @@ const express = require('express')
 const api = require('instagram-node').instagram()
 const app = express()
 const session = require('express-session')
+const nunjucks  = require('nunjucks');
 
 api.use({
   client_id: process.env.client_id,
   client_secret: process.env.client_secret
 })
+
+app.set('view engine', 'nunjucks')
+nunjucks.configure('app', {
+  autoescape: true,
+  express   : app
+});
 
 app.set('trust proxy', 1)
 app.use(session({
@@ -46,8 +53,8 @@ app.get('/authorize_user', exports.authorize_user);
 app.get('/handleauth', exports.handleauth);
  
 app.get('/', function(req, res){
-  console.log(req.session)
-  res.send('hello')
+  res.render('index.html')
+  // res.('hello')
 })
 
 

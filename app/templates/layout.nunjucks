@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instagram Memory</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+
+{% block content %} {% endblock %}
+
+  <script src="vendor/js/jquery-min.js"></script>
+  <script type="text/javascript" src="public/js/app.js"></script>
+
+</body>
+</html>
