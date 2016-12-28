@@ -5,25 +5,25 @@ const autoPrefixer = require('gulp-autoprefixer')
 
 gulp.task('nunjucks', ()=> {
   // Gets .html and .nunjucks files in pages
-  return gulp.src('app/views/pages/**/*.+(html|nunjucks)')
+  return gulp.src('views/pages/**/*.+(html|nunjucks)')
   // Renders template with nunjucks
   .pipe(nunjucksRender({
-      path: ['app/views/templates']
+      path: ['views/templates']
     }))
   // output files in app folder
-  .pipe(gulp.dest('app'))
+  .pipe(gulp.dest('views'))
 });
 
 gulp.task('sass', ()=> {
-  gulp.src('./app/public/src/sass/app.scss')
+  gulp.src('./public/src/sass/app.scss')
     .pipe(sass())
     .pipe(autoPrefixer())
-    .pipe(gulp.dest('./app/public/css/'))
+    .pipe(gulp.dest('public/css'))
 });
 
 gulp.task('watch', ()=>{
-  gulp.watch('./app/public/src/sass/app.scss', ['sass'])
-  gulp.watch('app/views/pages/**/*.+(html|nunjucks)', ['nunjucks'])
+  gulp.watch('./public/src/sass/app.scss', ['sass'])
+  gulp.watch('views/pages/**/*.+(html|nunjucks)', ['nunjucks'])
 })
 
 gulp.task('default', ['watch', 'nunjucks']);

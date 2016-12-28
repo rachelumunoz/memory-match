@@ -1,0 +1,39 @@
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+  
+  <div class="hero">
+    <div class="title">
+      <i class="fa fa-instagram" aria-hidden="true"></i>
+      <h3>Memory</h3>
+    </div>
+    <button> <a href="/authorize_user">New Game</a></button>
+  </div>
+
+  <div class="wrapper">
+    <div class="outer-container">
+      <div class="row row-one">
+        <div class="column column-one"></div>
+        <div class="column column-two"></div>
+        <div class="column column-three"></div>
+      </div>
+      <div class="row row-two">
+        <div class="column column-one"></div>
+        <div class="column column-two"></div>
+        <div class="column column-three"></div>
+      </div>
+      <div class="row row-three">
+        <div class="column column-one hidden"></div>
+        <div class="column column-two"></div>
+        <div class="column column-three"></div>
+      </div>
+      <div class="row row-four">
+        <div class="column column-one"></div>
+        <div class="column column-two"></div>
+        <div class="column column-three"></div>
+      </div>
+    </div>
+  </div>
+
+  <div>hello</div>
+{% endblock %}

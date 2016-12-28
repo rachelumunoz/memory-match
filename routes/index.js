@@ -1,5 +1,5 @@
 exports.home = (req, res)=>{
-  res.render('index.html',{
+  res.render('index.html', {
     title: "Instagram Memory"
   })
 };

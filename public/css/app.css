@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html, body {
+  background-size: cover;
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Arima Madurai', cursive; }
+
+/******************Header************************/
+.hero {
+  height: 75px;
+  width: 100%;
+  background-color: #fefefe;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.title .fa-instagram {
+  font-size: 150%;
+  padding-right: 15px; }
+
+.title h3 {
+  font-size: 150%; }
+
+.hero button {
+  border-radius: 5px;
+  height: 25px;
+  width: 150px;
+  background-color: green; }
+
+/******************Board************************/
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #f5f7f5;
+  height: 100%; }
+
+.outer-container {
+  margin: auto;
+  height: 700px;
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px solid white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.row {
+  height: 200px;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.column {
+  color: black;
+  border: 1px dashed black;
+  height: 125px;
+  width: 125px; }

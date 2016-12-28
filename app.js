@@ -5,9 +5,9 @@ const api = require('instagram-node').instagram()
 const app = express()
 const session = require('express-session')
 const nunjucks  = require('nunjucks');
-const routes = require('./app/routes')
+const routes = require('./routes')
 
-app.use(express.static(__dirname + '/app/public'))
+app.use(express.static(__dirname + '/public'))
 
 api.use({
   client_id: process.env.client_id,
@@ -15,7 +15,7 @@ api.use({
 })
 
 app.set('view engine', 'nunjucks')
-nunjucks.configure('app', {
+nunjucks.configure('views', {
   autoescape: true,
   express   : app
 });
