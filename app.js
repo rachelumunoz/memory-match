@@ -1,13 +1,13 @@
 require('dotenv').config();
-
 const http = require('http');
 const express = require('express')
 const api = require('instagram-node').instagram()
 const app = express()
 const session = require('express-session')
 const nunjucks  = require('nunjucks');
-
 const routes = require('./app/routes')
+
+app.use(express.static(__dirname + '/app/public'))
 
 api.use({
   client_id: process.env.client_id,
@@ -21,6 +21,7 @@ nunjucks.configure('app', {
 });
 
 app.set('trust proxy', 1)
+
 app.use(session({
   secret: process.env.sessionSecret,
   resave: false,
@@ -55,8 +56,6 @@ app.get('/authorize_user', exports.authorize_user);
 app.get('/handleauth', exports.handleauth);
  
 app.get('/', routes.home)
-
-
 
 
 app.set('port', process.env.PORT || 3000);

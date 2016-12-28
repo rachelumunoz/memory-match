@@ -1,7 +1,26 @@
 {% extends "layout.nunjucks" %}
 
 {% block content %}
-  <h1>This is the index page</h1>
-  <h2>gulp?</h2>  
-  <h3>duck?</h3>
+  <div class="outer-container">
+    <div class="row-one">
+      <span class="column column-one"></span>
+      <span class="column column-two"></span>
+      <span class="column column-three"></span>
+    </div>
+    <div class="row-two">
+      <span class="column column-one"></span>
+      <span class="column column-two"></span>
+      <span class="column column-three"></span>
+    </div>
+    <div class="row-three">
+      <span class="column column-one"></span>
+      <span class="column column-two"></span>
+      <span class="column column-three"></span>
+    </div>
+    <div class="row-four">
+      <span class="column column-one"></span>
+      <span class="column column-two"></span>
+      <span class="column column-three"></span>
+    </div>
+  </div>
 {% endblock %}
