@@ -7,6 +7,8 @@ const app = express()
 const session = require('express-session')
 const nunjucks  = require('nunjucks');
 
+const routes = require('./app/routes')
+
 api.use({
   client_id: process.env.client_id,
   client_secret: process.env.client_secret
@@ -52,10 +54,7 @@ app.get('/authorize_user', exports.authorize_user);
 // This is your redirect URI 
 app.get('/handleauth', exports.handleauth);
  
-app.get('/', function(req, res){
-  res.render('index.html')
-  // res.('hello')
-})
+app.get('/', routes.home)
 
 
 
