@@ -25,7 +25,7 @@ app.use(logger('dev'));
 app.set('view engine', 'nunjucks')
 nunjucks.configure('views', {
   autoescape: true,
-  express   : app
+  express : app
 });
 
 app.set('trust proxy', 1)

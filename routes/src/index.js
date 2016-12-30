@@ -3,23 +3,27 @@ const router = express.Router();
 const config = require('../config').instagram;
 const api = require('instagram-node').instagram();
 const INSTA_API = require('instagram-api');
+var sess;
 
 api.use({ client_id: process.env.client_id, client_secret: process.env.client_secret });
  
-var sess;
 
 exports.home = router.get('/', function(req, res) {
   var userImages = [];
   sess = req.session;
   if (!sess.access_token) { 
     res.redirect('/authorize_user');
+    // res.render('index.html',{
+    //   title: "ypypypy"
+    // })
   }
   else {
     var instagramAPI = new INSTA_API(sess.access_token);
 
     instagramAPI.userSelfMedia().then(function(result) {
     userImages.push(...result.data)
-    console.log(userImages[0])
+    console.log(userImages[0].images.thumbnail.url)
+    
     res.render('index.html',{
       title: "Memory",
       userImages
@@ -30,7 +34,6 @@ exports.home = router.get('/', function(req, res) {
 
   }
 });
-
 
 exports.authorize_user = function(req, res) {
   res.redirect(api.get_authorization_url(config.redirect_uri, { scope: config.scope , state: config.state }));
