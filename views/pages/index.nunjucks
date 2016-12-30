@@ -1,11 +1,11 @@
-{% extends "layout.nunjucks" %}
+{% extends "layout" %}
 
 {% block content %}
   
   <div class="hero">
     <div class="title">
       <i class="fa fa-instagram" aria-hidden="true"></i>
-      <h3>Memory</h3>
+      <h3>{{title}}</h3>
     </div>
     <button> <a href="/authorize_user">New Game</a></button>
   </div>
@@ -34,6 +34,12 @@
       </div>
     </div>
   </div>
+  <div>
+    <h2> images </h2>
+    <div>
+      
+    </div>
+    
 
-  <div>hello</div>
+  </div>
 {% endblock %}

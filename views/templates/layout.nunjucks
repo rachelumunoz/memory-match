@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Instagram Memory</title>
+  <title>Memory</title>
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:300,400|Source+Sans+Pro:300,400" rel="stylesheet">
   <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -11,8 +11,9 @@
 
 {% block content %} {% endblock %}
 
-  <!-- <script src="/app/vendor/js/jquery-min.js"></script> -->
-   <script type="text/javascript" src="/js/home.js"></script>
+ 
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="/js/home.js"></script>
 
 </body>
 </html>

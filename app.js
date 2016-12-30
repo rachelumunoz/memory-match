@@ -1,18 +1,26 @@
 require('dotenv').config();
+// require("babel-polyfill");
+
 const http = require('http');
-const express = require('express')
-const api = require('instagram-node').instagram()
-const app = express()
-const session = require('express-session')
+const express = require('express');
+const api = require('instagram-node').instagram();
+const session = require('express-session');
 const nunjucks  = require('nunjucks');
-const routes = require('./routes')
+const logger = require('morgan');
+// const routes = require('./routes')
+const index = require('./routes/index')
+const apiRoutes = require('./routes/api')
+
+const app = express()
 
 app.use(express.static(__dirname + '/public'))
 
-api.use({
-  client_id: process.env.client_id,
-  client_secret: process.env.client_secret
-})
+// api.use({
+//   client_id: process.env.client_id,
+//   client_secret: process.env.client_secret
+// })
+
+app.use(logger('dev'));
 
 app.set('view engine', 'nunjucks')
 nunjucks.configure('views', {
@@ -24,39 +32,14 @@ app.set('trust proxy', 1)
 
 app.use(session({
   secret: process.env.sessionSecret,
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { secure : false}
 }))
 
-
-const redirect_uri = 'http://127.0.0.1:3000/handleauth';
-
-exports.authorize_user = function(req, res) {
-  res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
-};
- 
- //need templates
-exports.handleauth = function(req, res) {
-   
-  api.authorize_user(req.query.code, redirect_uri, function(err, result) {
-    if (err) {
-      console.log(err.body);
-      res.send("Didn't work");
-    } else {
-      // console.log('Yay! Access token is ' + result.access_token);
-      req.session.access_token = result.access_token
-      res.send('You made it!!');
-    }
-  });
-};
-
-app.get('/authorize_user', exports.authorize_user);
-// This is your redirect URI 
-app.get('/handleauth', exports.handleauth);
- 
-app.get('/', routes.home)
-
+app.use('/', index.home);
+app.use('/authorize_user', index.authorize_user)
+app.use('/handleauth', index.handleauth)
 
 app.set('port', process.env.PORT || 3000);
 
