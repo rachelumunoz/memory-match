@@ -25,15 +25,16 @@ exports.home = router.get('/', function (req, res) {
     instagramAPI.userSelfMedia().then(function (result) {
       userImages.push.apply(userImages, _toConsumableArray(result.data));
       console.log(userImages[0].images.thumbnail.url);
-
-      res.render('index.html', {
-        title: "Memory",
+  
+      res.render('index', {
+        title: "film",
         userImages: userImages
       });
     }, function (err) {
       console.log(err); // error info 
     });
   }
+
 });
 
 exports.authorize_user = function (req, res) {

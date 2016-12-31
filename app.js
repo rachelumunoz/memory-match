@@ -7,7 +7,6 @@ const api = require('instagram-node').instagram();
 const session = require('express-session');
 const nunjucks  = require('nunjucks');
 const logger = require('morgan');
-// const routes = require('./routes')
 const index = require('./routes/index')
 const apiRoutes = require('./routes/api')
 
@@ -15,20 +14,16 @@ const app = express()
 
 app.use(express.static(__dirname + '/public'))
 
-// api.use({
-//   client_id: process.env.client_id,
-//   client_secret: process.env.client_secret
-// })
-
 app.use(logger('dev'));
 
-app.set('view engine', 'nunjucks')
+app.set('view engine', 'njx')
+
 nunjucks.configure('views', {
   autoescape: true,
   express : app
 });
 
-app.set('trust proxy', 1)
+// app.set('trust proxy', 1)
 
 app.use(session({
   secret: process.env.sessionSecret,
@@ -37,9 +32,23 @@ app.use(session({
   cookie: { secure : false}
 }))
 
+// app.get('/', (req, res)=>{
+//   res.render('index',{
+//     title: 'foo'
+//   })
+// });
+
 app.use('/', index.home);
-app.use('/authorize_user', index.authorize_user)
-app.use('/handleauth', index.handleauth)
+
+app.use('/authorize_user', index.authorize_user);
+app.use('/handleauth', index.handleauth);
+
+app.get('/test', (req, res)=>{
+  res.render('test',{
+    title: 'foo'
+  })
+})
+
 
 app.set('port', process.env.PORT || 3000);
 
