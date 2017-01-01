@@ -47,36 +47,20 @@ html, body {
 }
 
 /******************Board************************/
+// #board {
+//   background:#CCC;
+//   height:700px;
+//   width:500px;
+//   border: 1px solid black;
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin:0px auto;
+// }
 
-.wrapper {
-  display: flex;
-  background-color: #f5f7f5;
-  height: 100%;
-}
-
-.outer-container {
-  margin: auto;
-  height:700px;
-  width:500px;
-  display: flex;
-  border: 2px solid white;
-  flex-direction: column;
-}
-
-.row {
-  height: 200px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-}
-
-.column {
-  color: black;
-  border: 1px dashed black;
-  height: 125px;
-  width: 125px;
-}
-
-.hidden {
-  // #d8e1d9;
-}
+// #board > div {
+//   background-color: red;
+//   border: solid 1px black;
+//   width: 100px;
+//   height: 100px;
+//   margin: 3px;
+// }

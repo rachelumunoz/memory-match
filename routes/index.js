@@ -1,5 +1,7 @@
 'use strict';
 
+var utils = require('../public/js/utils')
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var express = require('express');
@@ -25,7 +27,7 @@ exports.home = router.get('/', function (req, res) {
     instagramAPI.userSelfMedia().then(function (result) {
       userImages.push.apply(userImages, _toConsumableArray(result.data));
       console.log(userImages[0].images.thumbnail.url);
-  
+
       res.render('index', {
         title: "film",
         userImages: userImages
