@@ -13,6 +13,31 @@ var sess;
 
 api.use({ client_id: process.env.client_id, client_secret: process.env.client_secret });
 
+
+//
+Array.prototype.memory_tile_shuffle = function(){
+    var i = this.length, j, temp;
+    while(--i > 0){
+        j = Math.floor(Math.random() * (i+1));
+        temp = this[j];
+        this[j] = this[i];
+        this[i] = temp;
+    }
+    return this;
+}
+
+Array.prototype.doubleThem = function(){
+  var that = this;
+  this.map(function(item) {
+    var doubledItem = item
+    that.push(doubledItem)
+  })
+ return this;
+}
+
+
+
+
 exports.home = router.get('/', function (req, res) {
   var userImages = [];
   sess = req.session;
@@ -28,9 +53,11 @@ exports.home = router.get('/', function (req, res) {
       userImages.push.apply(userImages, _toConsumableArray(result.data));
       console.log(userImages[0].images.thumbnail.url);
 
+      var shuffled = userImages.memory_tile_shuffle().splice(0, 10).doubleThem()
+
       res.render('index', {
-        title: "film",
-        userImages: userImages
+        title: "Memory Match",
+        userImages: shuffled
       });
     }, function (err) {
       console.log(err); // error info 

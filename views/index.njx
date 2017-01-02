@@ -4,20 +4,30 @@
   
   <div class="hero">
     <div class="title">
-      <i class="fa fa-instagram" aria-hidden="true"></i>
-      <h3>{{ title }}</h3>
+      <i class="fa fa-instagram" id="insta-logo" aria-hidden="true"></i> 
+
+      <h3>&vert; {{ title }}</h3>
+      <a href="#">New Game</a>
     </div>
-    <button> <a href="/authorize_user">New Game</a></button>
   </div>
 
   <div id="container">
     <div id="board">
       {% for image in userImages %}
-        <div><img src="{{ image.images.thumbnail.url}}"></div>
+        <div class="images">
+          <div class="overlay"></div>
+          <img src="{{ image.images.thumbnail.url}}"  data-image="{{image.id}}">
+        </div>
       {% endfor %}
     </div>
   </div>
   
+<script>
 
+</script>
  
 {% endblock %}
+
+
+<!-- onclick="clickTile(this)" -->
+<!-- data-key="" -->
