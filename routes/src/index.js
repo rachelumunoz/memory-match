@@ -9,7 +9,7 @@ var sess;
 
 api.use({ client_id: process.env.client_id, client_secret: process.env.client_secret });
  
-Array.prototype.memory_tile_shuffle = function(){
+Array.prototype.shuffleTiles = function(){
     var i = this.length, randomIndex, temp;
     while(0 !== i){
       randomIndex = Math.floor(Math.random() * i );
@@ -66,7 +66,7 @@ exports.game = router.get('/game',(req, res)=>{
       userImages.push(...result.data);
       console.log(userImages[0].images.thumbnail.url);
 
-      var shuffled = userImages.memory_tile_shuffle().splice(0, 10).doubleThem()
+      var shuffled = userImages.shuffleTiles().splice(0, 10).doubleThem().shuffleTiles()
 
       res.render('game.njx', {
         title: "Memory Match",
@@ -78,6 +78,4 @@ exports.game = router.get('/game',(req, res)=>{
   }
 });
 
-exports.notFound = router.get('*', (req, res)=>{
-  res.render('notFound.html')
-})
+// exports.notFound = 
