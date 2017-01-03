@@ -12,25 +12,34 @@ html, body {
 
 }
 
+a {
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+}
 /******************Header************************/
-.hero {
+.header {
   height: 75px;
   width: 100%;
   background-color: #fefefe;
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 2px -4px black;
+}
 
-.title {
+.title-left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; 
-  margin-top: 20px;
+  align-items: center;
+
 }
 
 .vert{
@@ -41,20 +50,20 @@ html, body {
   font-size: 225%;
   padding-right: 15px;
   margin-left: 175px;
-  /*margin-top:20px;*/
 }
 
-.title h3 {
+.title-left h3 {
   font-size: 150%; 
   margin-right: 15px;
-
 }
 
-.hero button {
-  border-radius: 5px;
-  height: 25px;
-  width: 150px;
-  background-color: green; }
+.title-left h3 span {
+  font-weight: 100;
+}
+
+.title-right {
+   margin-right: 175px;
+}
 
 /******************Board************************/
 

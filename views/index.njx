@@ -2,12 +2,13 @@
 
 {% block content %}
   
-  <div class="hero">
-    <div class="title">
+  <div class="header">
+    <div class="title title-left">
       <i class="fa fa-instagram" id="insta-logo" aria-hidden="true"></i> 
-
-      <h3>&vert; {{ title }}</h3>
-      <a href="#">New Game</a>
+      <h3><span>&vert;</span> {{ title }}</h3>
+    </div>
+    <div class="title title-right">
+      <a class="new-game" href="#">New Game</a>
     </div>
   </div>
 
@@ -27,7 +28,3 @@
 </script>
  
 {% endblock %}
-
-
-<!-- onclick="clickTile(this)" -->
-<!-- data-key="" -->
