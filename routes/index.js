@@ -12,12 +12,14 @@ var sess;
 api.use({ client_id: process.env.client_id, client_secret: process.env.client_secret });
 
 Array.prototype.memory_tile_shuffle = function(){
-    var i = this.length, j, temp;
-    while(--i > 0){
-        j = Math.floor(Math.random() * (i+1));
-        temp = this[j];
-        this[j] = this[i];
-        this[i] = temp;
+    var i = this.length, randomIndex, temp;
+    while(0 !== i){
+      randomIndex = Math.floor(Math.random() * i );
+      i--;
+      
+      temp = this[i];
+      this[i] = this[randomIndex];
+      this[randomIndex] = temp;
     }
     return this;
 }
@@ -31,12 +33,9 @@ Array.prototype.doubleThem = function(){
  return this;
 }
 
-
-
-
 exports.home = router.get('/', function (req, res) {
-  
-  res.send('made it home')
+  res.render('index')
+
 });
 
 exports.authorize_user = function (req, res) {
@@ -60,6 +59,7 @@ exports.handleauth = function (req, res) {
 exports.game = router.get('/game', function (req, res){
   var userImages = [];
   sess = req.session;
+  
   if (!sess.access_token) {
     res.redirect('/authorize_user');
   } else {

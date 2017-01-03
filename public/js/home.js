@@ -4,6 +4,8 @@ var lastTileClicked = [];
 var lastTileClickedHTML = [];
 var imageKeys = [];
 
+var gameOver = false;
+
 var tiles = document.querySelectorAll('.images');
 
 function clickTile(){
@@ -16,7 +18,6 @@ function clickTile(){
  
   //show image
   overlay.classList.add('hidden')
-
   if (!imageKeys.includes(imageKey)){
     //new turn, no elements clicked
     if(lastTileClicked.length === 0){
@@ -48,8 +49,35 @@ function clickTile(){
       }
     }
   }
+  
+  if (imageKeys.length === tiles.length){
+    gameOver = true;
+  }
 }
+
+
 
 tiles.forEach((tile)=>{
   tile.addEventListener('click', clickTile)
 })
+
+
+/*===================================================*/
+$( document ).ready(function() {
+  $('html, body').animate({
+        scrollTop: $('#board').offset().top
+    }, 'slow');
+
+  console.log(gameOver)
+  
+  $('.images').click(function(){
+    if (gameOver){
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+      console.log('it is true')
+      return false;
+    }
+  })
+
+
+});
+

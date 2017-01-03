@@ -23,7 +23,7 @@ nunjucks.configure('views', {
   express : app
 });
 
-// app.set('trust proxy', 1)
+app.set('trust proxy', 1)
 
 app.use(session({
   secret: process.env.sessionSecret,
@@ -31,12 +31,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure : false}
 }))
-
-// app.get('/', (req, res)=>{
-//   res.render('index',{
-//     title: 'foo'
-//   })
-// });
 
 app.use('/', index.home);
 
