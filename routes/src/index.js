@@ -64,7 +64,6 @@ exports.game = router.get('/game',(req, res)=>{
 
     instagramAPI.userSelfMedia().then((result)=> {
       userImages.push(...result.data);
-      console.log(userImages[0].images.thumbnail.url);
 
       var shuffled = userImages.shuffleTiles().splice(0, 10).doubleThem().shuffleTiles()
 
@@ -78,4 +77,3 @@ exports.game = router.get('/game',(req, res)=>{
   }
 });
 
-// exports.notFound = 
