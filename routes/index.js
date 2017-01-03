@@ -7,35 +7,38 @@ var router = express.Router();
 var config = require('../config').instagram;
 var api = require('instagram-node').instagram();
 var INSTA_API = require('instagram-api');
+var nunjucks = require('nunjucks');
+
 var sess;
 
 api.use({ client_id: process.env.client_id, client_secret: process.env.client_secret });
 
-Array.prototype.memory_tile_shuffle = function(){
-    var i = this.length, randomIndex, temp;
-    while(0 !== i){
-      randomIndex = Math.floor(Math.random() * i );
-      i--;
-      
-      temp = this[i];
-      this[i] = this[randomIndex];
-      this[randomIndex] = temp;
-    }
-    return this;
-}
+Array.prototype.memory_tile_shuffle = function () {
+  var i = this.length,
+      randomIndex,
+      temp;
+  while (0 !== i) {
+    randomIndex = Math.floor(Math.random() * i);
+    i--;
 
-Array.prototype.doubleThem = function(){
+    temp = this[i];
+    this[i] = this[randomIndex];
+    this[randomIndex] = temp;
+  }
+  return this;
+};
+
+Array.prototype.doubleThem = function () {
   var that = this;
-  this.map(function(item) {
-    var doubledItem = item
-    that.push(doubledItem)
-  })
- return this;
-}
+  this.map(function (item) {
+    var doubledItem = item;
+    that.push(doubledItem);
+  });
+  return this;
+};
 
 exports.home = router.get('/', function (req, res) {
-  res.render('index')
-
+  res.render('index.html');
 });
 
 exports.authorize_user = function (req, res) {
@@ -56,10 +59,10 @@ exports.handleauth = function (req, res) {
   });
 };
 
-exports.game = router.get('/game', function (req, res){
+exports.game = router.get('/game', function (req, res) {
   var userImages = [];
   sess = req.session;
-  
+
   if (!sess.access_token) {
     res.redirect('/authorize_user');
   } else {
@@ -69,9 +72,9 @@ exports.game = router.get('/game', function (req, res){
       userImages.push.apply(userImages, _toConsumableArray(result.data));
       console.log(userImages[0].images.thumbnail.url);
 
-      var shuffled = userImages.memory_tile_shuffle().splice(0, 10).doubleThem()
+      var shuffled = userImages.memory_tile_shuffle().splice(0, 10).doubleThem();
 
-      res.render('game', {
+      res.render('game.njx', {
         title: "Memory Match",
         userImages: shuffled
       });

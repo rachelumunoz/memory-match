@@ -1,67 +1,136 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
 
 html, body {
   background-size: cover;
   box-sizing: border-box;
   font-family: 'Source Sans Pro', sans-serif;
   font-family: 'Arima Madurai', cursive;
+  background-color: #f5f7f5;
+  color: #060407;
+
 }
 
+a {
+  color: #060407;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+}
 
 /******************Header************************/
-
-.hero {
+.header {
   height: 75px;
   width: 100%;
-  background-color: #fefefe;  
+  background-color: #fefefe;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 2px -4px black;
 }
 
-.title {
-  display: flex;
+.title-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; 
+  align-items: center;
 
 }
 
-.title .fa-instagram {
-  font-size: 150%;
-  padding-right: 15px;
+.vert{
+  size: 150%;
 }
 
-.title h3 {
-  font-size: 150%;
-  
+#insta-logo {
+  font-size: 225%;
+  padding-right: 10px;
+  margin-left: 175px;
 }
 
-.hero button {
-  border-radius: 5px;
-  height: 25px;
-  width: 150px;
-  background-color: green;
+.title-left h3 {
+  font-size: 150%; 
+  margin-right: 15px;
+}
+
+.title-left h3 span {
+  font-weight: 100;
+}
+
+.title-right {
+   margin-right: 175px;
+   font-weight: 100;
 }
 
 /******************Board************************/
-// #board {
-//   background:#CCC;
-//   height:700px;
-//   width:500px;
-//   border: 1px solid black;
-//   display: flex;
-//   flex-wrap: wrap;
-//   margin:0px auto;
-// }
 
-// #board > div {
-//   background-color: red;
-//   border: solid 1px black;
-//   width: 100px;
-//   height: 100px;
-//   margin: 3px;
-// }
+img {
+  height: 70%;
+  width: 70%;
+
+}
+
+#container {
+  margin-top: 70px;
+}
+
+#board {
+  padding: 25px;
+  height:100vh;
+  width: 850px;
+  background-color: #fefefe;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+}
+
+#board > div {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+  background-color: #c5d2c6;
+}
+
+.hidden {
+  background-color:rgba(0,0,0,0);
+}
+
+/******************index************************/
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+
+.log-in-call {
+  background-color: #fefefe;
+  border-radius: 7px;
+  height: 60px;
+  width: 250px;
+  margin-top: 200px;
+  text-align: center;
+  padding-top: 18px;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+}

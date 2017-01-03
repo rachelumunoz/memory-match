@@ -9,15 +9,12 @@ html, body {
   font-family: 'Source Sans Pro', sans-serif;
   font-family: 'Arima Madurai', cursive;
   background-color: #f5f7f5;
-  color: #060407;
-
-}
+  color: #060407; }
 
 a {
   color: #060407;
   font-family: 'Open Sans', sans-serif;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /******************Header************************/
 .header {
@@ -30,99 +27,101 @@ a {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; 
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 2px -4px black;
-}
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  box-shadow: 0 3px 2px -4px black; }
 
 .title-left {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; 
-  align-items: center;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
-}
-
-.vert{
-  size: 150%;
-}
+.vert {
+  size: 150%; }
 
 #insta-logo {
   font-size: 225%;
   padding-right: 10px;
-  margin-left: 175px;
-}
+  margin-left: 175px; }
 
 .title-left h3 {
-  font-size: 150%; 
-  margin-right: 15px;
-}
+  font-size: 150%;
+  margin-right: 15px; }
 
 .title-left h3 span {
-  font-weight: 100;
-}
+  font-weight: 100; }
 
 .title-right {
-   margin-right: 175px;
-   font-weight: 100;
-}
+  margin-right: 175px;
+  font-weight: 100; }
 
 /******************Board************************/
-
 img {
   height: 70%;
-  width: 70%;
-
-}
+  width: 70%; }
 
 #container {
-  margin-top: 70px;
-}
+  margin-top: 70px; }
 
 #board {
   padding: 25px;
-  height:100vh;
+  height: 100vh;
   width: 850px;
   background-color: #fefefe;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: auto;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
-}
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25); }
 
 #board > div {
   margin-right: 5px;
   margin-bottom: 5px;
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  position: relative;
-}
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative; }
 
 .overlay {
   position: absolute;
-  top:0px;
-  left:0px;
-  bottom:0px;
-  right:0px;
-  background-color: #c5d2c6;
-}
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-color: #c5d2c6; }
 
 .hidden {
-  background-color:rgba(0,0,0,0);
-}
+  background-color: transparent; }
 
 /******************index************************/
-
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  width: auto;
-}
-
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto; }
 
 .log-in-call {
   background-color: #fefefe;
@@ -130,8 +129,6 @@ img {
   height: 60px;
   width: 250px;
   margin-top: 200px;
-  /*border: 1px solid black;*/
   text-align: center;
   padding-top: 18px;
-  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
-}
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25); }

@@ -1,1 +1,17 @@
-<!--  -->
+{% extends "layout.njx" %}
+
+{% block content %}
+
+{% include "partials/header.njx" %}
+
+<div>
+  from gulp
+</div>
+
+<div class="container">
+  <div class="log-in-call">
+    <a href="/authorize_user">Click here to use your instagram images!</a>
+  </div>
+</div>
+
+{% endblock %}

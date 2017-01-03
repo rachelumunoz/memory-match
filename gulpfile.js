@@ -6,14 +6,14 @@ const babel = require("gulp-babel");
 
 gulp.task('njx', ()=> {
   // Gets .html and .nunjucks files in pages
-  // return gulp.src('views/pages/**/*.+(html|njx)')
+  return gulp.src('views/pages/**/*.+(html|njx)')
   // // Renders template with nunjucks
-  // .pipe(nunjucksRender({
-  //     path: ['views/pages/']
-  //   }))
+  .pipe(nunjucksRender({
+      path: ['views/templates/']
+    }))
   // // output files in app folder
-  // .pipe(gulp.dest('views'))
-  console.log('hi')
+  .pipe(gulp.dest('views'))
+  // console.log('hi')
 });
 
 gulp.task('sass', ()=> {
@@ -34,8 +34,8 @@ gulp.task('es6', () => {
 
 gulp.task('default', ['njx'], ()=>{
   gulp.watch('./public/src/sass/app.scss', ['sass'])
-  // gulp.watch('./views/pages/**/*.+(html|njx)', ['njx'])
-  gulp.watch('./routes/src/index.js)', ['es6'])
+  gulp.watch('./views/pages/**/*.+(html|njx)', ['njx'])
+  gulp.watch('./routes/src/index.js', ['es6'])
 });
 
 
