@@ -43,11 +43,7 @@ app.use('/', index.home);
 app.use('/authorize_user', index.authorize_user);
 app.use('/handleauth', index.handleauth);
 
-app.get('/test', (req, res)=>{
-  res.render('test',{
-    title: 'foo'
-  })
-})
+app.use('/game', index.game)
 
 
 app.set('port', process.env.PORT || 3000);

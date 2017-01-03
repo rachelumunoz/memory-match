@@ -13,7 +13,7 @@ html, body {
 }
 
 a {
-  color: black;
+  color: #060407;
   font-family: 'Open Sans', sans-serif;
   text-decoration: none;
 }
@@ -48,7 +48,7 @@ a {
 
 #insta-logo {
   font-size: 225%;
-  padding-right: 15px;
+  padding-right: 10px;
   margin-left: 175px;
 }
 
@@ -63,6 +63,7 @@ a {
 
 .title-right {
    margin-right: 175px;
+   font-weight: 100;
 }
 
 /******************Board************************/
