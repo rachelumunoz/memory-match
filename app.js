@@ -1,5 +1,4 @@
 require('dotenv').config();
-// require("babel-polyfill");
 
 const http = require('http');
 const express = require('express');
@@ -8,7 +7,7 @@ const session = require('express-session');
 const nunjucks  = require('nunjucks');
 const logger = require('morgan');
 const index = require('./routes/index')
-const apiRoutes = require('./routes/api')
+// const apiRoutes = require('./routes/api')
 
 const app = express()
 
@@ -39,6 +38,7 @@ app.use('/handleauth', index.handleauth);
 
 app.use('/game', index.game)
 
+app.get('*', index.notFound)
 
 app.set('port', process.env.PORT || 3000);
 

@@ -77,3 +77,7 @@ exports.game = router.get('/game',(req, res)=>{
     });
   }
 });
+
+exports.notFound = router.get('*', (req, res)=>{
+  res.render('notFound.html')
+})

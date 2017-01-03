@@ -83,3 +83,7 @@ exports.game = router.get('/game', function (req, res) {
     });
   }
 });
+
+exports.notFound = router.get('*', function (req, res) {
+  res.render('notFound.html');
+});

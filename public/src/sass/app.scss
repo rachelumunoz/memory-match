@@ -28,8 +28,6 @@ a {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex; 
   justify-content: space-between;
   align-items: center;
@@ -37,8 +35,6 @@ a {
 }
 
 .title-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex; 
   align-items: center;
 
@@ -112,7 +108,7 @@ img {
 }
 
 .hidden {
-  background-color:rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0);
 }
 
 /******************index************************/
