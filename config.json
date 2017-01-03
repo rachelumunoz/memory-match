@@ -3,7 +3,7 @@
     "client_id": "process.env.client_id",
     "client_secret": "process.env.client_secret",
     "redirect_uri": "http://127.0.0.1:3000/handleauth",
-    "scope": ["basic", "likes", "public_content", "follower_list", "relationships", "comments"],
+    "scope": "basic",
     "state": "a state"
   }
 }
