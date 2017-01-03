@@ -4,19 +4,18 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Rachel Munoz",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.3",
     "dotenv": "^2.0.0",
     "es6-promise": "^4.0.5",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "instagram-api": "^1.0.3",
     "instagram-node": "^0.5.8",
-    "isomorphic-fetch": "^2.2.1",
     "nunjucks": "^3.0.0"
   },
   "devDependencies": {
