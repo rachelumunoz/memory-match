@@ -2,69 +2,54 @@ console.log('home')
 
 var lastTileClicked = [];
 var lastTileClickedHTML = [];
+var imageKeys = [];
+
 var tiles = document.querySelectorAll('.images');
 
 function clickTile(){
-  var that = this;
   var tile = this.querySelector('img');
   var imageId = tile.dataset.image;
-  var overlay = this.querySelector('div')
+  var imageKey = tile.dataset.key;
+  
+  var overlay = this.querySelector('div');
+  var that = this;
  
+  //show image
   overlay.classList.add('hidden')
 
-  //new turn, no elements clicked
-  if(lastTileClicked.length === 0){
-    lastTileClicked.push(imageId);
-    lastTileClickedHTML.push(that)
-    console.log(lastTileClicked)
-  }
-  //if an element has been clicked, aka one item in the array
-  else{
-    //if match keep showing image
-    if (lastTileClicked[0] === imageId) {
-      console.log('match')
-      lastTileClickedHTML = [];
-      lastTileClicked = [];
-      return;
+  if (!imageKeys.includes(imageKey)){
+    //new turn, no elements clicked
+    if(lastTileClicked.length === 0){
+      lastTileClicked.push(imageId);
+      lastTileClickedHTML.push(that);
+      imageKeys.push(imageKey);
     }
-    //not match, hide images
-    else{
-      lastTileClickedHTML.push(that)
-
-      function flipBack(){
-        // lastTileClickedHTML[0].querySelector('div').classList.remove('hidden');
-        // overlay.classList.remove('hidden')
-        // lastTileClicked = [];
-        // lastTileClickedHTML = [];
-        // overlay = "";
-        lastTileClickedHTML.forEach((tile)=>{
-          tile.querySelector('div').classList.remove('hidden');
-        })
-
+    //if an image has been clicked, aka one item in the array
+    else {
+      //if match keep images showing
+      if (lastTileClicked[0] === imageId && !imageKeys.includes(imageKey)) {
         lastTileClickedHTML = [];
         lastTileClicked = [];
-
-
-        // console.log(lastTileClickedHTML)
+        imageKeys.push(imageKey);
       }
-
-      // flipBack()
-      setTimeout(flipBack, 850)
-
-      
+      //not match, hide images
+      else {
+        lastTileClickedHTML.push(that);
+        imageKeys.splice(-1,1)
+        function flipBack(){
+          lastTileClickedHTML.forEach((tile)=>{
+            tile.querySelector('div').classList.remove('hidden');
+          })
+          
+          lastTileClickedHTML = [];
+          lastTileClicked = [];
+        }
+        setTimeout(flipBack, 750);
+      }
     }
-    
-
-    
-    
   }
 }
-
 
 tiles.forEach((tile)=>{
   tile.addEventListener('click', clickTile)
 })
-
-//when clicked, show image
-  //if match, keep images shown
-  //else, hide images
