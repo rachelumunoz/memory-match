@@ -70,7 +70,10 @@ exports.game = router.get('/game', function (req, res) {
 
     instagramAPI.userSelfMedia().then(function (result) {
       userImages.push.apply(userImages, _toConsumableArray(result.data));
-      console.log(userImages[0].images.thumbnail.url);
+
+      //if not enough images || not using insta, render premade cards,
+      //else use their iamges
+
 
       var shuffled = userImages.shuffleTiles().splice(0, 10).doubleThem().shuffleTiles();
 
@@ -83,5 +86,3 @@ exports.game = router.get('/game', function (req, res) {
     });
   }
 });
-
-// exports.notFound =

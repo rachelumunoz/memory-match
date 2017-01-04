@@ -17,7 +17,7 @@ gulp.task('njx', ()=> {
 });
 
 gulp.task('sass', ()=> {
-  return gulp.src('./public/src/sass/app.scss')
+  return gulp.src('./public/src/sass/**/*.scss)')
     .pipe(sass())
     .pipe(autoPrefixer())
     .pipe(gulp.dest('public/css'))
@@ -33,11 +33,10 @@ gulp.task('es6', () => {
 
 
 gulp.task('default', ['njx'], ()=>{
-  gulp.watch('./public/src/sass/app.scss', ['sass'])
+  gulp.watch('./public/src/sass/**/*.scss', ['sass'])
   gulp.watch('./views/pages/**/*.+(html|njx)', ['njx'])
   gulp.watch('./routes/src/index.js', ['es6'])
 });
-
 
 
 

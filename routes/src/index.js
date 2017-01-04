@@ -65,6 +65,10 @@ exports.game = router.get('/game',(req, res)=>{
     instagramAPI.userSelfMedia().then((result)=> {
       userImages.push(...result.data);
 
+      //if not enough images || not using insta, render premade cards,
+      //else use their iamges
+
+
       var shuffled = userImages.shuffleTiles().splice(0, 10).doubleThem().shuffleTiles()
 
       res.render('game.njx', {

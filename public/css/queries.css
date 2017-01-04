@@ -1,0 +1,27 @@
+@media only screen and (max-width: 870px) {
+  .images {
+    height: 150px;
+    width: 150px;
+  }
+
+  #board{
+    /*height: 75vh;*/
+    width: 650px;
+    padding: 10px;
+  }
+
+  #board > div {
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .images {
+    height: 150px;
+    width: 150px;
+  }
+
+  #board{
+    width: 450px;
+    padding: 5px;
+  }
+}
