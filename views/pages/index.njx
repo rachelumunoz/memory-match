@@ -6,7 +6,9 @@
 
 <div class="container">
   <div class="log-in-call">
-    <a href="/authorize_user">Click here to use your instagram images!</a>
+    <div class="insta-link">
+      <a href="/authorize_user">Use your instagram images!</a>
+    </div>
   </div>
 </div>
 

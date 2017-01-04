@@ -121,6 +121,11 @@ img {
 
 
 .log-in-call {
+  display: flex;
+  flex-direction: column;
+} 
+
+.insta-link, .non-insta-link {
   background-color: #fefefe;
   border-radius: 7px;
   height: 60px;

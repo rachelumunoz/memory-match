@@ -4,8 +4,11 @@
   
 {% include "./templates/partials/header.njx" %}
 
+  
+
   <div id="container">
     <div id="board">
+      {{error}}
       {% for image in userImages %}
         <div class="images">
           <div class="overlay"></div>

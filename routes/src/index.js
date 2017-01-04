@@ -32,7 +32,9 @@ Array.prototype.doubleThem = function(){
 }
 
 exports.home = router.get('/',(req, res)=> {
-  res.render('index.html');
+  var error = req.session.error
+  
+  res.render('index');
 });
 
 exports.authorize_user = (req, res) =>{
@@ -54,30 +56,31 @@ exports.handleauth = (req, res) =>{
 };
 
 exports.game = router.get('/game',(req, res)=>{
-  var userImages = [];
   sess = req.session;
-  
+
   if (!sess.access_token) {
     res.redirect('/authorize_user');
   } else {
     var instagramAPI = new INSTA_API(sess.access_token);
 
     instagramAPI.userSelfMedia().then((result)=> {
+      var userImages = [];
       userImages.push(...result.data);
 
-      //if not enough images || not using insta, render premade cards,
-      //else use their iamges
-
+      if (userImages.length < 10){
+        var count = 10 - userImages.length;
+        var error = `Uh oh, looks like you need ${count} more images to play!`
+      };
 
       var shuffled = userImages.shuffleTiles().splice(0, 10).doubleThem().shuffleTiles()
 
       res.render('game.njx', {
         title: "Memory Match",
-        userImages: shuffled
+        userImages: shuffled,
+        error
       });
     }, function (err) {
       console.log(err); // error info 
     });
   }
 });
-

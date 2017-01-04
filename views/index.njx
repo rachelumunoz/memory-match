@@ -1,0 +1,18 @@
+{% extends "./templates/layout.njx" %}
+
+{% block content %}
+
+{% include "./templates/partials/header.njx" %}
+
+<div class="container">
+  <div class="log-in-call">
+    <div class="insta-link">
+      <a href="/authorize_user">Use your instagram images to play!</a>
+    </div>
+  </div>
+</div>
+
+<div>
+  {{error}}
+</div>
+{% endblock %}
