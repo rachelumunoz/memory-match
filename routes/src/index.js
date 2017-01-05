@@ -9,28 +9,6 @@ var sess;
 
 api.use({ client_id: process.env.client_id, client_secret: process.env.client_secret });
  
-Array.prototype.shuffleTiles = function(){
-    var i = this.length, randomIndex, temp;
-    while(0 !== i){
-      randomIndex = Math.floor(Math.random() * i );
-      i--;
-      
-      temp = this[i];
-      this[i] = this[randomIndex];
-      this[randomIndex] = temp;
-    }
-    return this;
-}
-
-Array.prototype.doubleThem = function(){
-  var that = this;
-  this.map(function(item) {
-    var doubledItem = item
-    that.push(doubledItem)
-  })
- return this;
-}
-
 exports.home = router.get('/',(req, res)=> {
   var error = req.session.error
   
@@ -85,4 +63,24 @@ exports.game = router.get('/game',(req, res)=>{
   }
 });
 
+Array.prototype.shuffleTiles = function(){
+    var i = this.length, randomIndex, temp;
+    while(0 !== i){
+      randomIndex = Math.floor(Math.random() * i );
+      i--;
+      
+      temp = this[i];
+      this[i] = this[randomIndex];
+      this[randomIndex] = temp;
+    }
+    return this;
+}
 
+Array.prototype.doubleThem = function(){
+  var that = this;
+  this.map(function(item) {
+    var doubledItem = item
+    that.push(doubledItem)
+  })
+ return this;
+}
