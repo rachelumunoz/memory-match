@@ -4,9 +4,10 @@
   <title>Memory Match</title>
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100,300,400|Open+Sans:100,400" rel="stylesheet">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="/css/queries.css">
   <link rel="stylesheet" type="text/css" href="/css/app.css">
+
 
 </head>
 <body>
@@ -15,5 +16,8 @@
  
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  <script type="text/javascript" src="/js/home.js"></script>
+  {% block jquery %}
+   <script type="text/javascript" src="/js/animation.js"></script>
+  {% endblock %}
 </body>
 </html>

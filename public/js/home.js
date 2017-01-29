@@ -1,75 +1,91 @@
-var lastImageClickedIDs = [];
-var activeTileHTML = [];
-var tileKeysSeen = [];
-
-var gameOver = false;
-
-var tiles = document.querySelectorAll('.images');
-
-function clickTile(){
-  var tile = this.querySelector('img');
-  var imageId = tile.dataset.image;
-  var tileKey = tile.dataset.key;
+let game = {
   
-  var overlay = this.querySelector('div');
-  var that = this;
- 
-  //show image
-  overlay.classList.add('hidden')
+  settings: {
+    board: document.getElementById('board'),
+    tiles: document.querySelectorAll('.images'),
+    activeTileHTML:[],
+    tile: '',
+    imageId: '',
+    tileKey: '',
+    overlay: '',
+    lastTileClicked: { tileKey: "", imageId: ""},
+    tileKeysSeen: new Set(),
+    gameOver: false,
+    that: ''
+  },
   
-  //if tile hasn't been already matched or clicked on during the turn
-  if (!tileKeysSeen.includes(tileKey)){
-    //new turn, no elements clicked
-    if(lastImageClickedIDs.length === 0){
-      lastImageClickedIDs.push(imageId);
-      activeTileHTML.push(that);
-      tileKeysSeen.push(tileKey);
-    }
-    //if an image has been clicked, aka one item in the array
-    else {
-      //if match keep images showing
-      if (lastImageClickedIDs[0] === imageId && !tileKeysSeen.includes(tileKey)) {
-        activeTileHTML = [];
-        lastImageClickedIDs = [];
-        tileKeysSeen.push(tileKey);
-      }
-      //not match, hide images
-      else {
-        activeTileHTML.push(that);
-        tileKeysSeen.splice(-1,1)
-        function flipBack(){
-          activeTileHTML.forEach((tile)=>{
-            tile.querySelector('div').classList.remove('hidden');
-          })
-          
-          activeTileHTML = [];
-          lastImageClickedIDs = [];
+  init: function(){
+    s = this.settings;
+    this.bindUIActions()
+  },
+
+  bindUIActions: function(){
+    s.that = this
+    s.tiles.forEach((tile)=>{
+      tile.addEventListener('click', this.onClick)
+    })
+  },
+
+  onClick: function(){
+    s.tile = this; 
+    s.imageId = s.tile.querySelector('img').dataset.image; 
+    s.tileKey = s.tile.querySelector('img').dataset.key; 
+    s.overlay = s.tile.querySelector('.overlay'); 
+    s.tileHTML = s.tile; //possible repetition
+
+    if (s.activeTileHTML.length < 2){
+      s.overlay.classList.add('hidden')
+    } 
+    
+    if (!s.tileKeysSeen.has(s.tileKey)){
+      if (s.that.firstImage()){
+        s.activeTileHTML.push(s.tileHTML);
+        s.lastTileClicked = {tileKey: s.tileKey, imageId: s.imageId};
+      }else {
+        if (s.lastTileClicked.imageId === s.imageId && !s.tileKeysSeen.has(s.tileKey)) { // a match 
+          s.tileKeysSeen.add(s.tileKey);
+          s.that.resetContainers()
+        }else { // not a match
+          s.activeTileHTML.push(s.tileHTML);
+          setTimeout(s.that.flipTilesBack, 750);
         }
-        setTimeout(flipBack, 750);
       }
     }
-  }
-  
-  if (tileKeysSeen.length === tiles.length){
-    gameOver = true;
+
+    if (s.tileKeysSeen.size === (s.tiles.length / 2)){
+      s.gameOver = true;
+    }
+  },
+
+  firstImage: function(){
+    return s.lastTileClicked.imageId === "" && s.lastTileClicked.tileKey === ""
+  },
+  resetContainers: function(){
+    console.log('rest')
+    s.activeTileHTML = [];
+    s.lastTileClicked = {tileKey: "", imageId: ""};
+  },
+  flipTilesBack: function(){
+    s.activeTileHTML.forEach((tile)=>{
+      tile.querySelector('div').classList.remove('hidden');
+    })
+    s.activeTileHTML = [];
+    s.lastTileClicked = {tileKey: "", imageId: ""}; 
   }
 }
 
-tiles.forEach((tile)=>{
-  tile.addEventListener('click', clickTile)
-})
+game.init()
 
-/*===================================================*/
-$( document ).ready(function() {
+/*-==-=-=-=-=-=-=-=-=---=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+$( document ).ready(()=> {
   $('html, body').animate({
         scrollTop: $('#board').offset().top
     }, 'slow');
 
-  $('.images').click(function(){
+  $('.images').click(()=> {
     if (gameOver){
       $("html, body").animate({ scrollTop: 0 }, "slow");
       return false;
     }
   })
 });
-

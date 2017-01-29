@@ -2,7 +2,7 @@
   "instagram": {
     "client_id": "process.env.client_id",
     "client_secret": "process.env.client_secret",
-    "redirect_uri": ["http://127.0.0.1:3000/handleauth", "http://memory-match.herokuapp.com/handleauth"],
+    "redirect_uri": "http://127.0.0.1:3000/handleauth",
     "scope": "basic",
     "state": "a state"
   }

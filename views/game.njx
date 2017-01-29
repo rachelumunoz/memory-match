@@ -10,7 +10,7 @@
     <div id="board">
       {{error}}
       {% for image in userImages %}
-        <div class="images">
+        <div id="tile" class="images">
           <div class="overlay"></div>
           <img src="{{ image.images.thumbnail.url}}" data-key="{{loop.index}}" data-image="{{image.id}}">
         </div>
@@ -18,4 +18,5 @@
     </div>
   </div>
   
+ 
 {% endblock %}
