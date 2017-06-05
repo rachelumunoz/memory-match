@@ -1,6 +1,5 @@
 let game = {
-  
-  settings: {
+  settings: { // settings for the game to be played
     board: document.getElementById('board'),
     tiles: document.querySelectorAll('.images'),
     activeTileHTML:[],
@@ -16,14 +15,14 @@ let game = {
   
   init: function(){
     s = this.settings;
-    this.bindUIActions()
+    this.bindUIActions();
   },
 
   bindUIActions: function(){
-    s.that = this
-    s.tiles.forEach((tile)=>{
+    s.that = this; // preserve this context of game
+    s.tiles.forEach( tile => { // add event listener to each tile
       tile.addEventListener('click', this.onClick)
-    })
+    });
   },
 
   onClick: function(){
@@ -31,28 +30,28 @@ let game = {
     s.imageId = s.tile.querySelector('img').dataset.image; 
     s.tileKey = s.tile.querySelector('img').dataset.key; 
     s.overlay = s.tile.querySelector('.overlay'); 
-    s.tileHTML = s.tile; //possible repetition
+    s.tileHTML = s.tile;
 
     if (s.activeTileHTML.length < 2){
-      s.overlay.classList.add('hidden')
+      s.overlay.classList.add('hidden') // show image
     } 
     
-    if (!s.tileKeysSeen.has(s.tileKey)){
-      if (s.that.firstImage()){
+    if (!s.tileKeysSeen.has(s.tileKey)){ // check to see if particular tile has been seen yet
+      if (s.that.firstImage()){ // call helper function to check if the start of a new guess
         s.activeTileHTML.push(s.tileHTML);
         s.lastTileClicked = {tileKey: s.tileKey, imageId: s.imageId};
-      }else {
+      } else {
         if (s.lastTileClicked.imageId === s.imageId && !s.tileKeysSeen.has(s.tileKey)) { // a match 
-          s.tileKeysSeen.add(s.tileKey);
-          s.that.resetContainers()
+          s.tileKeysSeen.add(s.tileKey); // add tile to Set
+          s.that.resetContainers();
         }else { // not a match
           s.activeTileHTML.push(s.tileHTML);
-          setTimeout(s.that.flipTilesBack, 750);
+          setTimeout(s.that.flipTilesBack, 750); // flip tiles back around
         }
       }
     }
 
-    if (s.tileKeysSeen.size === (s.tiles.length / 2)){
+    if (s.tileKeysSeen.size === (s.tiles.length / 2)){ // check if all tiles have been guessed correctly
       s.gameOver = true;
     }
   },
@@ -60,11 +59,12 @@ let game = {
   firstImage: function(){
     return s.lastTileClicked.imageId === "" && s.lastTileClicked.tileKey === ""
   },
+  
   resetContainers: function(){
-    console.log('rest')
     s.activeTileHTML = [];
     s.lastTileClicked = {tileKey: "", imageId: ""};
   },
+  
   flipTilesBack: function(){
     s.activeTileHTML.forEach((tile)=>{
       tile.querySelector('div').classList.remove('hidden');

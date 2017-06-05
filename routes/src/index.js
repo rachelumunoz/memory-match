@@ -15,11 +15,11 @@ exports.home = router.get('/',(req, res)=> {
   res.render('index');
 });
 
-exports.authorize_user = (req, res) =>{
+exports.authorize_user = (req, res) => {
   res.redirect(api.get_authorization_url(config.redirect_uri, { scope: config.scope, state: config.state }));
 };
-
-exports.handleauth = (req, res) =>{
+ 
+exports.handleauth = (req, res) => {
   sess = req.session;
   api.authorize_user(req.query.code, config.redirect_uri, function (err, result) {
     if (err) {
@@ -33,7 +33,7 @@ exports.handleauth = (req, res) =>{
   });
 };
 
-exports.game = router.get('/game',(req, res)=>{
+exports.game = router.get('/game', (req, res)=>{
   sess = req.session;
 
   if (!sess.access_token) {
