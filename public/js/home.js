@@ -1,5 +1,5 @@
 let game = {
-  settings: { // settings for the game to be played
+  settings: { // properties for the game to be played
     board: document.getElementById('board'),
     tiles: document.querySelectorAll('.images'),
     activeTileHTML:[],
@@ -13,7 +13,7 @@ let game = {
     that: ''
   },
   
-  init: function(){
+  init: function(){ // method called to initialize game
     s = this.settings;
     this.bindUIActions();
   },
@@ -27,8 +27,8 @@ let game = {
 
   onClick: function(){
     s.tile = this; 
-    s.imageId = s.tile.querySelector('img').dataset.image; 
-    s.tileKey = s.tile.querySelector('img').dataset.key; 
+    s.imageId = s.tile.querySelector('img').dataset.image; // individual image ID
+    s.tileKey = s.tile.querySelector('img').dataset.key; // individual tile 
     s.overlay = s.tile.querySelector('.overlay'); 
     s.tileHTML = s.tile;
 
@@ -41,10 +41,10 @@ let game = {
         s.activeTileHTML.push(s.tileHTML);
         s.lastTileClicked = {tileKey: s.tileKey, imageId: s.imageId};
       } else {
-        if (s.lastTileClicked.imageId === s.imageId && !s.tileKeysSeen.has(s.tileKey)) { // a match 
+        if (s.lastTileClicked.imageId === s.imageId && !s.tileKeysSeen.has(s.tileKey)) { /* A MATCH! */ 
           s.tileKeysSeen.add(s.tileKey); // add tile to Set
           s.that.resetContainers();
-        }else { // not a match
+        }else { /* NOT A MATCH! */ 
           s.activeTileHTML.push(s.tileHTML);
           setTimeout(s.that.flipTilesBack, 750); // flip tiles back around
         }
@@ -56,6 +56,7 @@ let game = {
     }
   },
 
+  /* helpers */ 
   firstImage: function(){
     return s.lastTileClicked.imageId === "" && s.lastTileClicked.tileKey === ""
   },
@@ -66,9 +67,9 @@ let game = {
   },
   
   flipTilesBack: function(){
-    s.activeTileHTML.forEach((tile)=>{
+    s.activeTileHTML.forEach( tile => {
       tile.querySelector('div').classList.remove('hidden');
-    })
+    });
     s.activeTileHTML = [];
     s.lastTileClicked = {tileKey: "", imageId: ""}; 
   }
@@ -77,11 +78,14 @@ let game = {
 game.init()
 
 /*-==-=-=-=-=-=-=-=-=---=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-$( document ).ready(()=> {
+$( document ).ready(()=> { 
+  
+  // animates window to game board on page load
   $('html, body').animate({
         scrollTop: $('#board').offset().top
     }, 'slow');
 
+  // animates browser once game is over
   $('.images').click(()=> {
     if (gameOver){
       $("html, body").animate({ scrollTop: 0 }, "slow");
